@@ -17,6 +17,59 @@
   }
 }
 
+.setCollapsible {
+  padding-left: 10px;
+  .Collapsible {
+    margin-bottom: 0;
+    &__trigger {
+      @include gradientText($theme-rick-gradient);
+      @include calcRem(18);
+      cursor: pointer;
+    }
+
+    .is-closed::after {
+      @include gradientText($theme-rick-gradient);
+      content: '\276F';
+      position: absolute;
+      margin-left: 10px;
+      transform: rotate(90deg);
+      transition: 400ms ease;
+    }
+
+    .is-open::after {
+      @include gradientText($theme-rick-gradient);
+      content: '\276F';
+      position: absolute;
+      margin-left: 10px;
+      transform: rotate(270deg);
+      transition: 400ms ease;
+    }
+
+    &__contentOuter {
+      margin-top: 7px;
+      border-radius: 10px;
+      background: #f7f7f7;
+    }
+  }
+
+  .setsList {
+    display: flex;
+    text-align: center;
+    font-family: 'PT Sans', sans-serif;
+
+    img {
+      z-index: -1;
+      padding: 5px;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      float: left;
+      background: #ccc;
+      border-radius: 100px;
+    }
+  }
+}
+
 .contentCard {
   .setTitle {
     display: flex;
@@ -123,32 +176,6 @@
 
     span {
       font-weight: bold;
-    }
-  }
-
-  .Collapsible {
-    &__trigger {
-      @include gradientText($theme-rick-gradient);
-      @include calcRem(18);
-      cursor: pointer;
-    }
-
-    .is-closed::after {
-      @include gradientText($theme-rick-gradient);
-      content: '\276F';
-      position: absolute;
-      margin-left: 10px;
-      transform: rotate(90deg);
-      transition: 400ms ease;
-    }
-
-    .is-open::after {
-      @include gradientText($theme-rick-gradient);
-      content: '\276F';
-      position: absolute;
-      margin-left: 10px;
-      transform: rotate(270deg);
-      transition: 400ms ease;
     }
   }
 }
