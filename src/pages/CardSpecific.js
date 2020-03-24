@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {CardSpecificAction} from '../store/actions/cardSpecificAction';
-import {CardSetsAction} from '../store/actions/cardSetsAction';
+import {CardInfoAction} from '../store/actions/cardInfoAction';
 
 import ReactLoading from 'react-loading';
 
@@ -14,7 +14,7 @@ function CardSpecific({
   const dispatch = useDispatch();
 
   const {cardCount, setName, setIcon} = useSelector(
-    state => state.CardSetsReducer
+    state => state.CardInfoReducer
   );
   const {card, cardName, setUri, next, prev} = useSelector(
     state => state.CardSpecificReducer
@@ -22,7 +22,7 @@ function CardSpecific({
 
   useEffect(() => {
     dispatch(CardSpecificAction({set, collectorNumber}));
-    dispatch(CardSetsAction(setUri));
+    dispatch(CardInfoAction(setUri));
   }, [collectorNumber, set, setUri, dispatch]);
 
   const minCard = 1;
@@ -50,7 +50,7 @@ function CardSpecific({
             <ReactLoading
               type={'spinningBubbles'}
               color={'#51a9b6a1'}
-              height={40}
+              height={60}
               width={40}
             />
           </div>
