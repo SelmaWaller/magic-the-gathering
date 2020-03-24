@@ -5,7 +5,6 @@ import {CardSpecificAction} from '../store/actions/cardSpecificAction';
 import {CardSetsAction} from '../store/actions/cardSetsAction';
 
 import ReactLoading from 'react-loading';
-import Collapsible from 'react-collapsible';
 
 function CardSpecific({
   match: {
