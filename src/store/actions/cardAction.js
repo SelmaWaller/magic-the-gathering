@@ -1,13 +1,12 @@
 import {GET_CARD_RESULTS, NO_CARD_RESULTS} from './actionTypes';
 
-export const CardAction = (page, name) => {
+export const CardAction = (set, name) => {
   return dispatch => {
-    const url =
-      name.length > 0
-        ? 'https://api.scryfall.com/cards/search'
-        : 'https://api.scryfall.com/cards';
-
-    return fetch(`${url}?page=${page}${name.length > 0 ? `&q=${name}` : ''}`)
+    return fetch(
+      `https://api.scryfall.com/cards/search?q=${
+        set === '' && name === '' ? 'set:ha2' : set
+      }+${name}`
+    )
       .then(response => {
         return response.json();
       })
@@ -15,10 +14,11 @@ export const CardAction = (page, name) => {
         dispatch({
           type: GET_CARD_RESULTS,
           cards: results.data,
+          set,
           name,
-          page,
-          toNextPage: results.has_more,
-          toPrevPage: page - 1,
+          setName: results.data.set_name,
+          setIcon: results.data.icon_svg_uri,
+          totalCards: results.total_cards,
         });
       })
       .catch(() => {
