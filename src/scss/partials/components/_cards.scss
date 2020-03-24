@@ -1,33 +1,3 @@
-.postFilter {
-  .activeButton {
-    cursor: pointer;
-    transition: 200ms ease-out;
-    transition: 200ms ease-out;
-
-    &:hover {
-      color: $theme-black-solid;
-      transition: 200ms ease-out;
-    }
-
-    &__hide {
-      cursor: default;
-      opacity: 0.5;
-      user-select: none;
-      transition: 200ms ease-out;
-    }
-  }
-
-  .pages {
-    display: flex;
-
-    .currentPage {
-      margin-left: 15px;
-      margin-right: 13px;
-      color: rgba($theme-gray-solid, 0.5);
-    }
-  }
-}
-
 .cards {
   min-width: 100%;
   min-height: 100%;
@@ -47,11 +17,7 @@
   }
 }
 
-.cardSpecific {
-  max-width: 800px;
-  margin: auto;
-  margin-bottom: 80px;
-
+.contentCard {
   .setTitle {
     display: flex;
     align-items: center;
@@ -62,72 +28,8 @@
     }
 
     img {
-      margin-right: 15px;
-      width: 40px;
-    }
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 0;
-    @include calcRem(30);
-  }
-
-  img {
-    float: left;
-    opacity: 0.9;
-    width: 350px;
-    max-width: 100%;
-    border-radius: 20px;
-    padding: 10px;
-  }
-
-  .loading {
-    float: left;
-  }
-
-  .cardInfo {
-    float: left;
-    padding-left: 40px;
-
-    p {
-      line-height: 22px;
-      max-width: 300px;
-      @include calcRem(17.5);
-    }
-
-    span {
-      font-weight: bold;
-    }
-  }
-
-  .Collapsible {
-    &__trigger {
-      @include gradientText($theme-rick-gradient);
-      @include calcRem(18);
-      cursor: pointer;
-    }
-
-    .is-closed::after {
-      @include gradientText($theme-rick-gradient);
-      content: '\276F';
-      position: absolute;
-      margin-left: 10px;
-      transform: rotate(90deg);
-      transition: 400ms ease;
-    }
-
-    .is-open::after {
-      @include gradientText($theme-rick-gradient);
-      content: '\276F';
-      position: absolute;
-      margin-left: 10px;
-      transform: rotate(270deg);
-      transition: 400ms ease;
-    }
-
-    p {
-      margin: 3px;
+      margin-right: 5px;
+      width: 60px;
     }
   }
 
@@ -173,6 +75,11 @@
       transition: 300ms;
     }
 
+    .prevCard:disabled:hover span,
+    .nextCard:disabled:hover span {
+      transform: rotate(0) translateY(0) translateX(0);
+    }
+
     .nextCard span {
       position: absolute;
       bottom: 1px;
@@ -184,6 +91,64 @@
     .nextCard:hover span {
       transform: rotate(90deg) translateY(-4px) translateX(3px);
       transition: 300ms;
+    }
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include calcRem(30);
+  }
+
+  img {
+    float: left;
+    opacity: 0.9;
+    width: 350px;
+    max-width: 100%;
+    border-radius: 20px;
+    padding: 10px;
+  }
+
+  .loading {
+    float: left;
+  }
+
+  .cardInfo {
+    float: left;
+    padding-left: 40px;
+
+    p {
+      max-width: 340px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .Collapsible {
+    &__trigger {
+      @include gradientText($theme-rick-gradient);
+      @include calcRem(18);
+      cursor: pointer;
+    }
+
+    .is-closed::after {
+      @include gradientText($theme-rick-gradient);
+      content: '\276F';
+      position: absolute;
+      margin-left: 10px;
+      transform: rotate(90deg);
+      transition: 400ms ease;
+    }
+
+    .is-open::after {
+      @include gradientText($theme-rick-gradient);
+      content: '\276F';
+      position: absolute;
+      margin-left: 10px;
+      transform: rotate(270deg);
+      transition: 400ms ease;
     }
   }
 }

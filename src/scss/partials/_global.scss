@@ -77,6 +77,15 @@ a {
   text-decoration: none;
 }
 
+p {
+  line-height: 23px;
+  @include calcRem(17.5);
+}
+
+span {
+  font-weight: bold;
+}
+
 li {
   list-style-type: square;
 }
@@ -140,6 +149,12 @@ li {
   }
 }
 
+.contentCard {
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 80px;
+}
+
 .linkedCard {
   cursor: pointer;
   transition: 200ms ease-out;
@@ -157,10 +172,39 @@ li {
   display: block;
 }
 
+.subheader,
 .postFilter {
   margin-top: 0;
   margin-bottom: 0;
   overflow: hidden;
+
+  .activeButton {
+    cursor: pointer;
+    transition: 200ms ease-out;
+    transition: 200ms ease-out;
+
+    &:hover {
+      color: $theme-black-solid;
+      transition: 200ms ease-out;
+    }
+
+    &__hide {
+      cursor: default;
+      opacity: 0.5;
+      user-select: none;
+      transition: 200ms ease-out;
+    }
+  }
+
+  .pages {
+    display: flex;
+
+    .currentPage {
+      margin-left: 15px;
+      margin-right: 13px;
+      color: rgba($theme-gray-solid, 0.5);
+    }
+  }
 
   input {
     background: none;
