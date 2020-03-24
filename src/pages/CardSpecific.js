@@ -39,6 +39,8 @@ function CardSpecific({
       : window.location.reload();
   };
 
+  const colorIdentityPattern = /[WUBRG]/;
+
   return (
     <div className="cardSpecific">
       <div className="setTitle">
@@ -65,7 +67,7 @@ function CardSpecific({
             }
             onClick={prevCard}
           >
-            Prev
+            <span>&#3894;</span>Prev
           </button>
         </div>
         <button className="currentPage">
@@ -79,7 +81,7 @@ function CardSpecific({
             }
             onClick={nextCard}
           >
-            Next
+            Next <span>&#3894;</span>
           </button>
         </div>
       </div>
@@ -95,15 +97,15 @@ function CardSpecific({
               alt={cardName}
             />
             <div className="cardInfo">
-              <h2>{cardName}</h2>
-              <p>{card.oracle_text}</p>
+              <h2>{cardName ? cardName : 'Card Name'}</h2>
+              <p>{card.oracle_text ? card.oracle_text : 'Oracle text'}</p>
               <p>
                 <span>Type: </span>
-                {card.type_line}
+                {card.type_line ? card.type_line : '-'}
               </p>
               <p>
                 <span>Rarity: </span>
-                {card.card_rarity
+                {card.rarity
                   ? card.rarity.charAt(0).toUpperCase() + card.rarity.slice(1)
                   : '-'}
               </p>
@@ -112,31 +114,31 @@ function CardSpecific({
                 {card.mana_cost ? card.mana_cost : '-'}
               </p>
               <p>
-                <span>Released: </span>
-                {card.released_at}
+                <span>Color identity: </span>
+                {colorIdentityPattern.test(card.color_identity)
+                  ? card.color_identity
+                  : '-'}
               </p>
               <p>
-                <span>Color identity: </span>
-                {card.color_identity === [' '] ? card.color_identity : '-'}
+                <span>Set type: </span>
+                {card.set_type
+                  ? card.set_type.charAt(0).toUpperCase() +
+                    card.set_type.slice(1)
+                  : '-'}
+              </p>
+              <p>
+                <span>Collector number: </span>
+                {card.collector_number ? card.collectorNumber : '-'}/
+                {cardCount ? cardCount : '-'}
               </p>
               <p>
                 <span>Artist: </span>
-                {card.artist}
+                {card.artist ? card.artist : '-'}
               </p>
-              <Collapsible trigger="Set info">
-                <p>
-                  <span>Set name: </span>
-                  {card.set_name}
-                </p>
-                <p>
-                  <span>Set type: </span>
-                  {card.set_type}
-                </p>
-                <p>
-                  <span>Collector number: </span>
-                  {card.collector_number}
-                </p>
-              </Collapsible>
+              <p>
+                <span>Released: </span>
+                {card.released_at ? card.released_at : '-'}
+              </p>
             </div>
           </>
         ) : (
@@ -145,32 +147,38 @@ function CardSpecific({
               <ReactLoading
                 type={'spinningBubbles'}
                 color={'#51a9b6a1'}
-                height={140}
-                width={140}
+                height={278}
+                width={200}
               />
             </div>
-            <h2>Waiting for data...</h2>
-            <p>
-              Status: <span>Unknown</span>
-            </p>
-            <p>
-              Species: <span>Unknown</span>
-            </p>
-            <p>
-              Gender: <span>Unknown</span>
-            </p>
-            <p>
-              Origin: <span>Unknown</span>
-            </p>
-            <p>
-              Location: <span>Unknown</span>
-            </p>
-            <p>
-              Created: <span>Unknown</span>
-            </p>
-            <Collapsible trigger="Episode appearances">
-              <p>about</p>
-            </Collapsible>
+            <div className="cardInfo">
+              <h2>{cardName}</h2>
+              <p>Oracle text</p>
+              <p>
+                <span>Type: </span>-
+              </p>
+              <p>
+                <span>Rarity: </span>-
+              </p>
+              <p>
+                <span>Mana cost: </span>-
+              </p>
+              <p>
+                <span>Color identity: </span>-
+              </p>
+              <p>
+                <span>Set type: </span>-
+              </p>
+              <p>
+                <span>Collector number: </span>-
+              </p>
+              <p>
+                <span>Artist: </span>-
+              </p>
+              <p>
+                <span>Released: </span>-
+              </p>
+            </div>
           </>
         )}
       </div>
