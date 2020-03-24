@@ -28,20 +28,20 @@ function CardSpecific({
   const minCard = 1;
   let prevCard = () => {
     collectorNumber >= minCard
-      ? (window.location = `/card-specific/${set}/${prev}`)
+      ? (window.location = `/card/${set}/${prev}`)
       : window.location.reload();
   };
 
   let nextCard = () => {
     collectorNumber <= cardCount
-      ? (window.location = `/card-specific/${set}/${next}`)
+      ? (window.location = `/card/${set}/${next}`)
       : window.location.reload();
   };
 
   const colorIdentityPattern = /[WUBRG]/;
 
   return (
-    <div className="cardSpecific">
+    <div className="contentCard">
       <div className="setTitle">
         {setIcon ? (
           <img src={setIcon} alt={setName} />
@@ -84,7 +84,7 @@ function CardSpecific({
           </button>
         </div>
       </div>
-      <div className="innerCard boxShadow textLeft cardSpecific">
+      <div className="innerCard boxShadow textLeft contentCard">
         {card ? (
           <>
             <img
@@ -127,7 +127,7 @@ function CardSpecific({
               </p>
               <p>
                 <span>Collector number: </span>
-                {card.collector_number ? card.collectorNumber : '-'}/
+                {card.collector_number ? card.collector_number : '-'}/
                 {cardCount ? cardCount : '-'}
               </p>
               <p>
