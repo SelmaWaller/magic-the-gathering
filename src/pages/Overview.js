@@ -3,77 +3,78 @@ import {useDispatch, useSelector} from 'react-redux';
 import ReactLoading from 'react-loading';
 
 import {CardAction} from './../store/actions/cardAction';
+import {CardSetsAction} from './../store/actions/cardSetsAction';
 import {DebouncerAction} from './../store/actions/debouncerAction';
 import Cards from './../components/cards';
+import SetNames from './../components/setNames';
+import Collapsible from 'react-collapsible';
 
 function Overview() {
   const dispatch = useDispatch();
 
+  const {setNames} = useSelector(state => state.CardSetsReducer);
+
   const debouncer = useSelector(state => state.DebouncerReducer.debouncer);
-  const {cards, name, page, toNextPage, toPrevPage} = useSelector(
-    state => state.CardReducer
-  );
+  const {cards} = useSelector(state => state.CardReducer);
 
   useEffect(() => {
+    dispatch(CardSetsAction());
     dispatch(DebouncerAction(debouncer));
-    dispatch(CardAction(1, ''));
+    dispatch(CardAction('set:ha2', ''));
   }, [debouncer, dispatch]);
 
   let handleCharSearch = input => {
     if (debouncer) {
       clearTimeout(debouncer);
     }
-    const value = input.target.value;
-    const bounce = setTimeout(() => dispatch(CardAction(1, value)), 300);
+    const name = input.target.value.split(' ').join('+');
+    const bounce = setTimeout(() => dispatch(CardAction('', name)), 300);
     dispatch(DebouncerAction(bounce));
-  };
-
-  let nextPage = () => {
-    dispatch(CardAction(page + 1, name));
-  };
-
-  let prevPage = () => {
-    dispatch(CardAction(page - 1, name));
   };
 
   return (
     <>
       <div className="wideCardContainer">
-        <div className="innerCard postFilter">
+        <div className="postFilter">
           <div>
             <input
               type="text"
-              placeholder={`Ex: "Jace"`}
+              placeholder={`Ex. "jace", "t:god"`}
               autoFocus
               onChange={handleCharSearch}
             />
           </div>
-          <div className="pages">
-            <button
-              className={
-                toPrevPage !== 0 ? 'activeButton' : 'activeButton__hide'
-              }
-              disabled={toPrevPage !== 0 ? false : true}
-              onClick={prevPage}
-            >
-              Prev
-            </button>
-
-            <button className="currentPage">{page} of a billion</button>
-            <button
-              className={
-                toNextPage !== false ? 'activeButton' : 'activeButton__hide'
-              }
-              disabled={toNextPage !== false ? false : true}
-              onClick={nextPage}
-            >
-              Next
-            </button>
+          <div className="setCollapsible">
+            <Collapsible trigger="Sort by set">
+              <div className="iconContainer">
+                {setNames ? (
+                  setNames.map((value, index) => {
+                    return (
+                      <div key={index}>
+                        <SetNames
+                          key={index}
+                          setCode={value.code}
+                          setIcon={value.icon_svg_uri}
+                          setFullName={value.name}
+                        />
+                      </div>
+                    );
+                  })
+                ) : (
+                  <>
+                    <ReactLoading
+                      type={'spinningBubbles'}
+                      color={'#51a9b6a1'}
+                      height={100}
+                      width={100}
+                    />
+                  </>
+                )}
+              </div>
+            </Collapsible>
           </div>
-          <button>set</button>
         </div>
       </div>
-
       <div className="smallCardContainer overview">
         {cards ? (
           cards.map((value, index) => {
