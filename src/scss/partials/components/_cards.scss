@@ -50,7 +50,7 @@
 .cardSpecific {
   max-width: 800px;
   margin: auto;
-  margin-bottom: 156px;
+  margin-bottom: 80px;
 
   .setTitle {
     display: flex;
@@ -69,6 +69,7 @@
 
   h2 {
     margin-top: 0;
+    margin-bottom: 0;
     @include calcRem(30);
   }
 
@@ -78,18 +79,21 @@
     width: 350px;
     max-width: 100%;
     border-radius: 20px;
+    padding: 10px;
   }
 
   .loading {
-    padding: 100px;
+    float: left;
   }
 
   .cardInfo {
     float: left;
     padding-left: 40px;
+
     p {
-      line-height: 20px;
+      line-height: 22px;
       max-width: 300px;
+      @include calcRem(17.5);
     }
 
     span {
@@ -137,6 +141,7 @@
     button {
       padding: 0;
     }
+
     .currentPage {
       margin: 0 10px -12px 15px;
       color: rgba($theme-gray-solid, 0.5);
@@ -146,12 +151,39 @@
     .nextCard {
       cursor: pointer;
       transition: 200ms ease-out;
+      position: relative;
 
       &:disabled {
         cursor: default;
         opacity: 0.5;
         transition: 200ms ease-out;
       }
+    }
+
+    .prevCard span {
+      position: absolute;
+      bottom: 1px;
+      right: 40px;
+      transform: rotate(0) translateX(0);
+      transition: 300ms;
+    }
+
+    .prevCard:hover span {
+      transform: rotate(-90deg) translateY(-3px) translateX(-3px);
+      transition: 300ms;
+    }
+
+    .nextCard span {
+      position: absolute;
+      bottom: 1px;
+      left: 43px;
+      transform: rotate(0) translateX(0);
+      transition: 300ms;
+    }
+
+    .nextCard:hover span {
+      transform: rotate(90deg) translateY(-4px) translateX(3px);
+      transition: 300ms;
     }
   }
 }

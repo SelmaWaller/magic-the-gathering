@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond:500&display=swap');
 
 * {
   box-sizing: border-box;
@@ -31,7 +31,7 @@
 :-moz-placeholder,
 ::-webkit-autofill {
   color: rgba($theme-gray-solid, 0.8);
-  @include mainFont('Cabin');
+  @include mainFont('EB Garamond');
 }
 
 ::selection {
@@ -58,7 +58,7 @@ input:focus {
 
 body {
   color: $theme-gray-solid;
-  @include mainFont('Cabin');
+  @include mainFont('EB Garamond');
 }
 
 .particles {
@@ -69,7 +69,7 @@ body {
 }
 
 input {
-  @include mainFont('Cabin');
+  @include mainFont('EB Garamond');
 }
 
 a {
@@ -92,7 +92,7 @@ li {
 
 .boxShadow {
   background: white;
-  box-shadow: 0 0 50px rgba(rgb(94, 147, 168), 0.3);
+  box-shadow: 0 0 50px rgba(#797979, 0.2);
 }
 
 .textCenter {
@@ -179,7 +179,7 @@ li {
   }
 
   button {
-    @include mainFont('Cabin');
+    @include mainFont('EB Garamond');
     background: none;
     padding: 10px 0 5px 2px;
     margin: 10px 0 -10px 7px;
