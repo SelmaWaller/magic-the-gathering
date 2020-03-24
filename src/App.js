@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import './scss/styles.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import Login from './pages/Login';
+import Navigation from './components/nav';
+import Footer from './components/footer';
+
+export default function App({children}) {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const currentUser = localStorage.username;
+
+  let updateLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  let updateLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+    localStorage.removeItem('token');
+  };
+
+  return localStorage.getItem('token') !== null && isLoggedIn ? (
+    <>
+      <div className="navbar">
+        <button className="boldText" onClick={updateLogout}>
+          Log out
+        </button>
+      </div>
+      <Navigation title={`Logged in as ${currentUser}`} />
+      <div className="container">{children}</div>
+      <Footer />
+    </>
+  ) : (
+    <Login updateLoginStatus={updateLogin} />
   );
 }
-
-export default App;
