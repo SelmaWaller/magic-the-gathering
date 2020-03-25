@@ -2,7 +2,9 @@ import {GET_CARD_RESULTS, NO_CARD_RESULTS} from './actionTypes';
 
 export const CardSpecificAction = ({set, collectorNumber}) => {
   return dispatch => {
-    return fetch(`https://api.scryfall.com/cards/${set}/${collectorNumber}`)
+    return fetch(
+      `https://cors-anywhere.herokuapp.com/https://api.scryfall.com/cards/${set}/${collectorNumber}`
+    )
       .then(response => {
         return response.json();
       })
@@ -12,8 +14,9 @@ export const CardSpecificAction = ({set, collectorNumber}) => {
           card: results,
           cardName: results.name,
           setUri: results.set_uri,
-          next: parseInt(collectorNumber, 10) + 1,
-          prev: parseInt(collectorNumber, 10) - 1,
+          setName: results.set_name,
+          next: parseInt(collectorNumber.replace(/\D/g, ''), 10) + 1,
+          prev: parseInt(collectorNumber.replace(/\D/g, ''), 10) - 1,
         });
       })
       .catch(() => {

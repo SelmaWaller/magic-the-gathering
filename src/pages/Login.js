@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 
-import userImg from './../images/userImg.png';
 import Particles from 'react-particles-js';
 import particleSetup from './../components/particles';
 
@@ -11,8 +10,8 @@ export default function Login({updateLoginStatus, updateLogin}) {
   let handleChange = input => {
     let name = input.target.name;
     let value = input.target.value;
-    let username = /^Johndoe$/;
-    let password = /^123456$/;
+    let username = /^username$/;
+    let password = /^password$/;
 
     switch (name) {
       case 'username':
@@ -28,8 +27,8 @@ export default function Login({updateLoginStatus, updateLogin}) {
 
   let handleSubmit = event => {
     event.preventDefault();
-    localStorage.setItem('username', 'Johndoe');
-    localStorage.setItem('password', '123456');
+    localStorage.setItem('username', 'username');
+    localStorage.setItem('password', 'password');
     localStorage.setItem('token', 'faketoken');
     updateLoginStatus();
   };
@@ -43,15 +42,13 @@ export default function Login({updateLoginStatus, updateLogin}) {
       />
       <div className="loginContainer">
         <div className="loginCard textCenter innerCard boxShadow">
-          <h1>Log in</h1>
-          <img src={userImg} alt="userImg" />
           <form onSubmit={handleSubmit}>
             <h4>
               <label htmlFor="username">
-                USERNAME{' '}
+                Username{' '}
                 <span className={usernameError ? '' : 'error__hide'}>
                   {' '}
-                  &nbsp;(Johndoe)
+                  (username)
                 </span>
               </label>
             </h4>
@@ -60,15 +57,15 @@ export default function Login({updateLoginStatus, updateLogin}) {
               id="username"
               type="text"
               name="username"
-              placeholder="Johndoe"
+              placeholder="username"
             />
 
             <h4>
               <label htmlFor="password">
-                PASSWORD{' '}
+                Password{' '}
                 <span className={passwordError ? '' : 'error__hide'}>
                   {' '}
-                  &nbsp;(123456)
+                  (password)
                 </span>
               </label>
             </h4>
@@ -88,6 +85,7 @@ export default function Login({updateLoginStatus, updateLogin}) {
               Log in
             </button>
           </form>
+          <div className="background"></div>
         </div>
       </div>
     </>

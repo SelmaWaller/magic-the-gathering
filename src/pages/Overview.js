@@ -1,19 +1,18 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ReactLoading from 'react-loading';
+import Collapsible from 'react-collapsible';
 
 import {CardAction} from './../store/actions/cardAction';
-import {CardSetsAction} from './../store/actions/cardSetsAction';
 import {DebouncerAction} from './../store/actions/debouncerAction';
+import {CardSetsAction} from './../store/actions/cardSetsAction';
+
 import Cards from './../components/cards';
-import SetNames from './../components/setNames';
-import Collapsible from 'react-collapsible';
 
 function Overview() {
   const dispatch = useDispatch();
 
   const {setNames} = useSelector(state => state.CardSetsReducer);
-
   const debouncer = useSelector(state => state.DebouncerReducer.debouncer);
   const {cards} = useSelector(state => state.CardReducer);
 
@@ -34,44 +33,46 @@ function Overview() {
 
   return (
     <>
+      <Collapsible trigger="Sets (newest to oldest)">
+        <div className="setList">
+          {setNames ? (
+            setNames.map((value, index) => {
+              return (
+                <div key={index} className="listItem">
+                  <img src={value.icon_svg_uri} alt={value.code} />
+                  <button
+                    key={index}
+                    onClick={() => {
+                      const queryCode = value.code;
+                      dispatch(CardAction(`set:${queryCode}`, ''));
+                    }}
+                  >
+                    <p>{value.name}</p>
+                  </button>
+                </div>
+              );
+            })
+          ) : (
+            <li>
+              <ReactLoading
+                type={'spinningBubbles'}
+                color={'#51a9b6a1'}
+                height={30}
+                width={30}
+              />
+            </li>
+          )}
+        </div>
+      </Collapsible>
       <div className="wideCardContainer">
         <div className="postFilter">
           <div>
             <input
               type="text"
-              placeholder={`Ex. "jace", "t:god"`}
+              placeholder={`Ex. Ajani, t:bear...`}
               autoFocus
               onChange={handleCharSearch}
             />
-          </div>
-          <div className="setCollapsible">
-            <Collapsible trigger="Sort by set">
-              <div className="iconContainer">
-                {setNames ? (
-                  setNames.map((value, index) => {
-                    return (
-                      <div key={index}>
-                        <SetNames
-                          key={index}
-                          setCode={value.code}
-                          setIcon={value.icon_svg_uri}
-                          setFullName={value.name}
-                        />
-                      </div>
-                    );
-                  })
-                ) : (
-                  <>
-                    <ReactLoading
-                      type={'spinningBubbles'}
-                      color={'#51a9b6a1'}
-                      height={100}
-                      width={100}
-                    />
-                  </>
-                )}
-              </div>
-            </Collapsible>
           </div>
         </div>
       </div>

@@ -27,9 +27,11 @@ export default function App({children}) {
           Log out
         </button>
       </div>
-      <Navigation title={`Logged in as ${currentUser}`} />
+      <Navigation title={`Logged in as ${currentUser}`} logout={updateLogout} />
       <div className="container">{children}</div>
-      <Footer />
+      <div className="container">
+        <Footer />
+      </div>
     </>
   ) : (
     <Login updateLoginStatus={updateLogin} />

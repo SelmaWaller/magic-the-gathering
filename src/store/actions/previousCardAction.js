@@ -1,9 +1,11 @@
 import {GET_CARD_RESULTS, NO_CARD_RESULTS} from './actionTypes';
 
-export const CardSetsAction = () => {
+export const PreviousCardAction = ({set, prev, collectorNumber}) => {
   return dispatch => {
     return fetch(
-      `https://cors-anywhere.herokuapp.com/https://api.scryfall.com/sets/`
+      `https://cors-anywhere.herokuapp.com/https://api.scryfall.com/cards/${set}/${
+        prev ? prev : collectorNumber
+      }`
     )
       .then(response => {
         return response.json();
@@ -11,8 +13,8 @@ export const CardSetsAction = () => {
       .then(results => {
         dispatch({
           type: GET_CARD_RESULTS,
-          setNames: results.data,
-          setCode: results.data.code,
+          previousCardData: results,
+          previewPrevCard: results.image_uris.normal,
         });
       })
       .catch(() => {

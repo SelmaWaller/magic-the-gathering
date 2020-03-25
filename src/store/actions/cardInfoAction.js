@@ -1,17 +1,22 @@
 import {GET_CARD_RESULTS} from './actionTypes';
 
-export const CardInfoAction = setType => {
+export const CardInfoAction = currentSet => {
   return dispatch => {
-    return fetch(`${setType}`)
+    return fetch(
+      `${
+        currentSet
+          ? currentSet
+          : 'https://cors-anywhere.herokuapp.com/https://api.scryfall.com/cards'
+      }`
+    )
       .then(response => {
         return response.json();
       })
       .then(results => {
         dispatch({
           type: GET_CARD_RESULTS,
-          setName: results.name,
           setIcon: results.icon_svg_uri,
-          cardCount: results.card_count,
+          lastCardInSet: results.card_count,
         });
       });
   };

@@ -3,7 +3,7 @@ import {GET_CARD_RESULTS, NO_CARD_RESULTS} from './actionTypes';
 export const CardAction = (set, name) => {
   return dispatch => {
     return fetch(
-      `https://api.scryfall.com/cards/search?q=${
+      `https://cors-anywhere.herokuapp.com/https://api.scryfall.com/cards/search?q=${
         set === '' && name === '' ? 'set:ha2' : set
       }+${name}`
     )

@@ -1,41 +1,58 @@
 .loginContainer {
+  font-family: 'PT Sans', sans-serif;
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: $theme-rick-gradient-light;
+  background-image: url('./../../images/login.png');
+  background-size: cover;
   z-index: -1;
 
-  h1 {
-    text-transform: uppercase;
-    color: $theme-gray-solid;
-    margin: -20px 0 30px;
-  }
-
   h4 {
-    @include calcRem(18);
+    @include calcRem(25);
     font-weight: bold;
-    color: $theme-gray-solid;
+    color: $theme-black-solid;
     text-align: left;
-    margin: 30px 0 5px -10px;
+    margin: -20px 0 5px -5px;
+
+    &:nth-child(3) {
+      margin-top: 30px;
+    }
 
     span {
+      @include calcRem(20);
       font-weight: normal;
-      @include gradientText($theme-rick-gradient);
-      animation: cardGradient 5s infinite;
+      color: rgb(18, 36, 56);
     }
   }
 
   .loginCard {
     width: 300px;
     padding: 60px 30px 30px;
-    background: rgba($theme-white-solid, 0.3);
     position: relative;
     display: block;
     align-items: center;
     justify-content: center;
     animation: login 6s infinite;
+    overflow: hidden;
+
+    .background {
+      position: absolute;
+      top: -10px;
+      bottom: -10px;
+      right: -5px;
+      left: -5px;
+      width: 130%;
+      height: 130%;
+      background-image: url('./../../images/login.png');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: left top;
+      opacity: 0.7;
+      filter: blur(4px);
+      z-index: -99;
+    }
 
     .form {
       position: relative;
@@ -49,7 +66,8 @@
       box-shadow: $card-shadow;
       margin: 5px 0 5px -10px;
       width: 100%;
-      background: $theme-skyblue;
+      font-weight: bold;
+      background: rgba($theme-skyblue, 0.5);
       border-radius: 3px;
     }
 
@@ -58,27 +76,24 @@
     }
 
     .loginButton {
-      @include mainFont('Cabin');
+      font-family: 'PT Sans', sans-serif;
       color: $theme-white-solid;
       text-transform: uppercase;
       border: none;
-      margin: 30px 0 10px;
+      margin: 30px 0 0;
       padding: 5px 10px;
       border-radius: 3px;
       @include calcRem(18);
       text-align: center;
-      background: $theme-gray-solid;
+      background: rgba($theme-black-solid, 0.8);
+      transition: 200ms ease-out;
       cursor: pointer;
 
       &:disabled {
-        opacity: 0.8;
+        opacity: 0.7;
         cursor: not-allowed;
+        transition: 200ms ease-out;
       }
-    }
-
-    img {
-      max-width: 120px;
-      -webkit-user-drag: none;
     }
   }
 }

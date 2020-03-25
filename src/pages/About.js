@@ -32,7 +32,7 @@ export default function About() {
                 <span>&#3894;</span>Prev
               </button>
             </div>
-            <button className="currentPage">1 of 2</button>
+            <button className="currentPage">{currentPage} of 2</button>
             <div>
               <button
                 disabled={currentPage === 2 ? true : false}
