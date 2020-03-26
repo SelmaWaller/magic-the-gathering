@@ -74,7 +74,8 @@ const Navigation = ({logout, currentUser}) => {
               <Collapsible trigger="Sets" open={true}>
                 <div className="setList">
                   {setNames ? (
-                    setNames.map((value, index) => {
+                    setNames.slice(5).map((value, index) => {
+                      //temporary solutions for future sets
                       return (
                         <div key={index} className="listItem">
                           <img src={value.icon_svg_uri} alt={value.code} />

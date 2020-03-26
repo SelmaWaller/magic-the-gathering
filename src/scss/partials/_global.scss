@@ -111,10 +111,6 @@ li {
   text-align: center;
 }
 
-.textLeft {
-  padding: 20px;
-}
-
 @supports (display: grid) {
   .smallCardContainer {
     display: grid;
@@ -142,7 +138,7 @@ li {
 
 .innerCard {
   margin: 10px;
-  border-radius: 20px;
+  border-radius: 15px;
   overflow: auto;
 
   img {

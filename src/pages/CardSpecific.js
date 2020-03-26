@@ -171,7 +171,13 @@ function CardSpecific({
               />
               <div className="cardInfo">
                 <h2>{cardName ? cardName : 'Card Name'}</h2>
-                <p>{card.oracle_text ? card.oracle_text : 'Oracle text'}</p>
+                <p>
+                  {card.oracle_text ? (
+                    card.oracle_text
+                  ) : (
+                    <i>No oracle text for this card</i>
+                  )}
+                </p>
                 <p>
                   <span>Type: </span>
                   {card.type_line ? card.type_line : '-'}

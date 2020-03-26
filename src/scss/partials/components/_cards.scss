@@ -32,6 +32,7 @@
       width: 100%;
       overflow: hidden;
       height: 60px;
+      box-shadow: none;
     }
 
     .setIconLoading {
@@ -114,10 +115,10 @@
   img {
     float: left;
     opacity: 0.9;
-    width: 350px;
+    width: 320px;
     max-width: 100%;
-    border-radius: 25px;
-    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 0 15px rgba(black, 0.3);
   }
 
   .loading {
@@ -128,6 +129,10 @@
   .cardInfo {
     float: left;
     padding-left: 25px;
+
+    h2 {
+      margin-top: 10px;
+    }
 
     p {
       max-width: 340px;
@@ -151,10 +156,9 @@
 
   .previewPrevCard {
     position: absolute;
-    width: 265px;
-    min-height: 340px;
-    left: 70px;
-    top: 200px;
+    width: 245px;
+    left: 100px;
+    top: 160px;
     opacity: 0.6;
 
     &__hide {
@@ -164,10 +168,10 @@
 
   .previewNextCard {
     position: absolute;
-    width: 265px;
+    width: 245px;
     min-height: 340px;
-    right: 70px;
-    top: 200px;
+    right: 100px;
+    top: 160px;
     opacity: 0.6;
 
     &__hide {

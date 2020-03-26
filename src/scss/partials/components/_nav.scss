@@ -104,7 +104,7 @@
       list-style: none;
       margin: 20px 0 0;
       font-weight: bold;
-      @include calcRem(18);
+      @include calcRem(17);
       transition: 200ms ease-out;
       width: 100%;
 
@@ -144,6 +144,7 @@
   .is-closed::after {
     content: '\276F';
     position: absolute;
+    margin-top: 1px;
     margin-left: 10px;
     transform: rotate(90deg);
     transition: 400ms ease;
@@ -152,6 +153,7 @@
   .is-open::after {
     content: '\276F';
     position: absolute;
+    margin-top: 1px;
     margin-left: 10px;
     transform: rotate(270deg);
     transition: 400ms ease;
