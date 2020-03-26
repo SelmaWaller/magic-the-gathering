@@ -1,12 +1,93 @@
-.navbar {
-  background: #fcfcfc;
-  background-position: center;
-  min-height: 100%;
-  width: 250px;
-  top: 0;
-  position: fixed;
-  box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.2);
+.minified {
+  background: #f0f0f0;
+  box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.3);
+  height: 100%;
+}
 
+.toggleButton {
+  top: 0;
+  position: absolute;
+  transition: 200ms;
+
+  .menuButton {
+    cursor: pointer;
+    transition: 200ms ease-out;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: 200ms ease-out;
+    }
+  }
+
+  .navIcons {
+    img {
+      opacity: 0.3;
+      transition: 100ms ease-out;
+    }
+
+    &__hide {
+      img {
+        opacity: 0;
+        transition: 100ms ease-out;
+      }
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  button {
+    margin-left: 5px;
+    background: none;
+    border: none;
+  }
+
+  img {
+    margin: 10px 10px 0 0;
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.toggle {
+  &__open,
+  &__closed {
+    background: #fcfcfc;
+    min-height: 100%;
+    width: 250px;
+    top: 0;
+    position: fixed;
+    box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.3);
+    transition: 300ms ease-out;
+    z-index: 999;
+  }
+}
+
+.userInfo {
+  background: #f0f0f0;
+  box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.3);
+  padding: 50px 0 20px;
+  text-align: center;
+  transition: 200ms;
+
+  img {
+    width: 100px;
+    opacity: 0.7;
+  }
+
+  p:nth-child(3) {
+    cursor: pointer;
+    color: rgb(33, 137, 163);
+
+    &:hover {
+      color: rgb(6, 91, 114);
+    }
+  }
+}
+
+.navbar {
   img {
     max-width: 30px;
     margin: 25px 0 0 20px;
@@ -15,24 +96,27 @@
   }
 
   ul {
-    margin-top: 50px;
     padding: 0 25px 0;
 
-    li {
+    li,
+    .Collapsible__trigger {
       font-family: 'PT Sans', sans-serif;
       list-style: none;
       margin: 20px 0 0;
       font-weight: bold;
-      @include calcRem(20);
-      position: relative;
+      @include calcRem(18);
       transition: 200ms ease-out;
+      width: 100%;
+
+      &:hover {
+        color: $theme-black-solid;
+      }
     }
   }
 
-  a,
-  .logoutLink {
+  a {
     cursor: pointer;
-    color: $theme-black-solid;
+    color: $theme-gray-solid;
     text-decoration: none;
     transition: 200ms ease-out;
     opacity: 0.8;
@@ -40,6 +124,76 @@
     &:hover {
       opacity: 1;
       transition: 200ms ease-out;
+    }
+  }
+}
+
+.Collapsible {
+  max-height: 330px;
+  width: 100%;
+  padding: 10px 0;
+  color: $theme-gray-solid;
+
+  &__contentOuter {
+    margin-left: -15px;
+    margin-right: -25px;
+    margin-top: -10px;
+    word-wrap: none;
+  }
+
+  .is-closed::after {
+    content: '\276F';
+    position: absolute;
+    margin-left: 10px;
+    transform: rotate(90deg);
+    transition: 400ms ease;
+  }
+
+  .is-open::after {
+    content: '\276F';
+    position: absolute;
+    margin-left: 10px;
+    transform: rotate(270deg);
+    transition: 400ms ease;
+  }
+
+  .setList {
+    margin: 20px 0;
+    overflow: auto;
+    max-height: 300px;
+
+    .listItem {
+      display: flex;
+      justify-content: left;
+
+      p {
+        @include calcRem(14);
+        font-weight: bold;
+      }
+
+      &:nth-child(odd) {
+        background: #dfdfdf;
+      }
+
+      img {
+        margin: 7px 0 0 5px;
+        height: 20px;
+        width: 20px;
+      }
+
+      button {
+        cursor: pointer;
+        background: none;
+        border: none;
+        text-align: left;
+        color: rgb(33, 137, 163);
+        margin: -5px 0 -5px;
+        padding: 0 10px 0 5px;
+
+        &:hover {
+          color: rgb(6, 91, 114);
+        }
+      }
     }
   }
 }

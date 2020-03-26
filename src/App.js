@@ -22,12 +22,7 @@ export default function App({children}) {
 
   return localStorage.getItem('token') !== null && isLoggedIn ? (
     <>
-      <div className="navbar">
-        <button className="boldText" onClick={updateLogout}>
-          Log out
-        </button>
-      </div>
-      <Navigation title={`Logged in as ${currentUser}`} logout={updateLogout} />
+      <Navigation currentUser={currentUser} logout={updateLogout} />
       <div className="container">{children}</div>
       <div className="container">
         <Footer />

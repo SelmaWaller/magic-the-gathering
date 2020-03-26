@@ -3,11 +3,7 @@ import {GET_CARD_RESULTS} from './actionTypes';
 export const CardInfoAction = currentSet => {
   return dispatch => {
     return fetch(
-      `${
-        currentSet
-          ? currentSet
-          : 'https://cors-anywhere.herokuapp.com/https://api.scryfall.com/cards'
-      }`
+      `${currentSet ? currentSet : 'https://api.scryfall.com/cards'}`
     )
       .then(response => {
         return response.json();

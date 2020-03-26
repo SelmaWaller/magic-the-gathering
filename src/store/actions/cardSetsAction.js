@@ -2,9 +2,7 @@ import {GET_CARD_RESULTS, NO_CARD_RESULTS} from './actionTypes';
 
 export const CardSetsAction = () => {
   return dispatch => {
-    return fetch(
-      `https://cors-anywhere.herokuapp.com/https://api.scryfall.com/sets/`
-    )
+    return fetch(`https://api.scryfall.com/sets/`)
       .then(response => {
         return response.json();
       })

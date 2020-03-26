@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import App from './App';
-import Overview from './pages/Overview';
+import Sets from './pages/Sets';
 import CardSpecific from './pages/CardSpecific';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -26,7 +26,7 @@ ReactDOM.render(
     <Router>
       <App>
         <Switch>
-          <Route path="/" exact component={Overview} />
+          <Route path="/" exact component={Sets} />
           <Route
             path="/card/:set/:collectorNumber"
             exact

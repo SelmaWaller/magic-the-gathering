@@ -93,8 +93,9 @@ li {
 }
 
 .container {
-  max-width: 1200px;
-  margin: 50px auto 0 260px;
+  max-width: 1500px;
+  margin: 40px auto 0 260px;
+  transition: 300ms ease-out;
 }
 
 .boldText {
@@ -112,15 +113,6 @@ li {
 
 .textLeft {
   padding: 20px;
-}
-
-@supports (display: grid) {
-  .iconContainer {
-    display: grid;
-    grid-gap: 15px;
-    margin: 10px;
-    grid-template-columns: repeat(auto-fit, 40px);
-  }
 }
 
 @supports (display: grid) {
@@ -187,6 +179,7 @@ li {
   margin-top: 0;
   margin-bottom: 0;
   overflow: hidden;
+  width: 200px;
 
   .activeButton {
     cursor: pointer;

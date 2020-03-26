@@ -1,0 +1,111 @@
+@media only screen and(max-width: 1260px) {
+  .toggleButton {
+    position: fixed;
+    z-index: 9999;
+    transition: 200ms;
+  }
+
+  .toggle {
+    &__closed {
+      background: #fcfcfc;
+      min-height: 100%;
+      width: 250px;
+      top: 0;
+      position: fixed;
+      box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.2);
+      transition: 300ms ease-out;
+      z-index: 999;
+      transition: 300ms ease-out;
+    }
+
+    &__open {
+      //hide nav on small screen
+      transform: translateX(-250px);
+      touch-action: none;
+      transition: 300ms ease-out;
+
+      .logoutLink {
+        display: none;
+      }
+
+      + .container {
+        padding: 0 30px 0 40px;
+        margin-left: 20px;
+        transition: 300ms ease-out;
+      }
+    }
+  }
+
+  .container {
+    padding: 0 20px 0 20px;
+  }
+
+  .previewCards {
+    display: none;
+  }
+}
+
+@media only screen and(max-width: 600px) {
+  .toggle {
+    &__closed {
+      background: rgba(#fcfcfc, 0.8);
+      min-height: 100%;
+      width: 100%;
+      top: 0;
+      position: fixed;
+      box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.8);
+      transition: 300ms ease-out;
+      z-index: 999;
+      transition: 300ms ease-out;
+
+      + .container {
+        padding: 0 30px 0 40px;
+        margin-left: 20px;
+        transition: 300ms ease-out;
+        filter: blur(4px);
+      }
+    }
+
+    &__open {
+      //hide nav on small screen
+      transform: translateX(-250px);
+      touch-action: none;
+      transition: 300ms ease-out;
+
+      .logoutLink {
+        display: none;
+      }
+
+      + .container {
+        padding: 0 30px 0 40px;
+        margin-left: 20px;
+        transition: 300ms ease-out;
+      }
+    }
+  }
+
+  .userInfo {
+    background: rgba(#cacaca, 0.6);
+    font-weight: bold;
+  }
+
+  .Collapsible {
+    .setList {
+      .listItem:nth-child(odd) {
+        background: rgba(#afafaf, 0.6);
+      }
+    }
+  }
+  @supports (display: grid) {
+    .smallCardContainer {
+      display: grid;
+      grid-gap: 10px;
+      margin: 0 10px;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 2fr));
+    }
+  }
+
+  .cards {
+    width: 100%;
+  }
+}

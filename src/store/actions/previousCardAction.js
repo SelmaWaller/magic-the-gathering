@@ -3,9 +3,7 @@ import {GET_CARD_RESULTS, NO_CARD_RESULTS} from './actionTypes';
 export const PreviousCardAction = ({set, prev, collectorNumber}) => {
   return dispatch => {
     return fetch(
-      `https://cors-anywhere.herokuapp.com/https://api.scryfall.com/cards/${set}/${
-        prev ? prev : collectorNumber
-      }`
+      `https://api.scryfall.com/cards/${set}/${prev ? prev : collectorNumber}`
     )
       .then(response => {
         return response.json();
