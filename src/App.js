@@ -11,6 +11,7 @@ export default function App({children}) {
 
   let updateLogin = () => {
     setIsLoggedIn(true);
+    window.location.reload();
   };
 
   let updateLogout = () => {

@@ -46,6 +46,33 @@
 }
 
 @media only screen and(max-width: 600px) {
+  .container {
+    margin-top: 10px;
+  }
+
+  .wideCardContainer {
+    margin-left: 5px;
+  }
+
+  body {
+    .contentCard,
+    .aboutCard,
+    .postFilter {
+      h2 {
+        font-size: 24px;
+      }
+
+      button,
+      input {
+        @include calcRem(16);
+      }
+
+      p {
+        @include calcRem(14);
+      }
+    }
+  }
+
   .toggle {
     &__closed {
       background: rgba(#fcfcfc, 0.8);
@@ -77,7 +104,7 @@
       }
 
       + .container {
-        padding: 0 30px 0 40px;
+        padding: 0px 20px 0 50px;
         margin-left: 20px;
         transition: 300ms ease-out;
       }
