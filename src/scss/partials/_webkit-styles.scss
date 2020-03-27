@@ -1,0 +1,36 @@
+::-webkit-scrollbar-corner,
+::-webkit-resizer,
+::-webkit-scrollbar-track {
+  background: none;
+  border: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $theme-scrollbar-hover;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $theme-scrollbar-hover;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder,
+::-webkit-autofill {
+  color: rgba($theme-gray-solid, 0.8);
+  font-family: 'PT Sans', sans-serif;
+}
+
+::selection {
+  background: $theme-blue;
+}
+
+::-moz-selection {
+  background: $theme-blue;
+}

@@ -16,7 +16,7 @@
     @include calcRem(22);
     position: absolute;
     margin-top: 2px;
-    @include gradientText($theme-rick-gradient);
+    color: black;
     animation: cardGradient 5s infinite;
   }
 
@@ -24,7 +24,7 @@
     @include calcRem(16);
     margin: 0;
     padding-left: 10px;
-    @include gradientText($theme-rick-gradient);
+    color: black;
     animation: cardGradient 5s infinite;
 
     &__hide {
@@ -110,7 +110,7 @@
         bottom: 240px;
         height: 30px;
         cursor: pointer;
-        @include gradientText($theme-rick-gradient);
+        color: black;
         animation: fadeIn 300ms ease, cardGradient 5s infinite;
       }
     }

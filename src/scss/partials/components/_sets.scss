@@ -1,0 +1,23 @@
+.cards {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 0;
+  opacity: 0.95;
+
+  img {
+    border-radius: 8px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.searchField {
+  width: 200px;
+  margin: 20px;
+  margin-left: 15px;
+
+  input:focus {
+    border-bottom: 1px solid rgba($theme-gray-solid, 0.5);
+  }
+}

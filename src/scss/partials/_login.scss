@@ -10,8 +10,8 @@
   background-position: center;
   z-index: -1;
 
-  h4 {
-    @include calcRem(25);
+  h3 {
+    @include calcRem(20);
     font-weight: bold;
     color: $theme-black-solid;
     text-align: left;
@@ -22,7 +22,7 @@
     }
 
     span {
-      @include calcRem(20);
+      @include calcRem(18);
       font-weight: normal;
       color: rgb(18, 36, 56);
     }

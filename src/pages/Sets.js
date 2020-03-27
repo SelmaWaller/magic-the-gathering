@@ -27,7 +27,7 @@ function Sets() {
   return (
     <>
       <div className="wideCardContainer">
-        <div className="postFilter">
+        <div className="searchField">
           <div>
             <input
               type="text"

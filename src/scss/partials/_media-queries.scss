@@ -7,7 +7,7 @@
 
   .toggle {
     &__closed {
-      background: #fcfcfc;
+      background: #fff;
       min-height: 100%;
       width: 250px;
       top: 0;
@@ -37,7 +37,11 @@
   }
 
   .container {
-    padding: 0 20px 0 20px;
+    padding: 0 20px 0 0;
+  }
+
+  .contentCard {
+    padding-left: 10px;
   }
 
   .previewCards {
@@ -48,10 +52,6 @@
 @media only screen and(max-width: 600px) {
   .container {
     margin-top: 10px;
-  }
-
-  .wideCardContainer {
-    margin-left: 5px;
   }
 
   body {

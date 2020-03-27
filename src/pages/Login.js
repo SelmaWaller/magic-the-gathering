@@ -43,7 +43,7 @@ export default function Login({updateLoginStatus, updateLogin}) {
       <div className="loginContainer">
         <div className="loginCard textCenter innerCard boxShadow">
           <form onSubmit={handleSubmit}>
-            <h4>
+            <h3>
               <label htmlFor="username">
                 Username{' '}
                 <span className={usernameError ? '' : 'error__hide'}>
@@ -51,8 +51,9 @@ export default function Login({updateLoginStatus, updateLogin}) {
                   (username)
                 </span>
               </label>
-            </h4>
+            </h3>
             <input
+              autoFocus
               onChange={handleChange}
               id="username"
               type="text"
@@ -60,7 +61,7 @@ export default function Login({updateLoginStatus, updateLogin}) {
               placeholder="username"
             />
 
-            <h4>
+            <h3>
               <label htmlFor="password">
                 Password{' '}
                 <span className={passwordError ? '' : 'error__hide'}>
@@ -68,7 +69,7 @@ export default function Login({updateLoginStatus, updateLogin}) {
                   (password)
                 </span>
               </label>
-            </h4>
+            </h3>
             <input
               onChange={handleChange}
               id="password"

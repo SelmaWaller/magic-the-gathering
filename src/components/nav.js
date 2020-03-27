@@ -80,6 +80,7 @@ const Navigation = ({logout, currentUser}) => {
                         <div key={index} className="listItem">
                           <img src={value.icon_svg_uri} alt={value.code} />
                           <button
+                            title={value.name}
                             key={index}
                             onClick={() => {
                               const queryCode = value.code;

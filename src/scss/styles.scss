@@ -2,10 +2,13 @@
 @import 'partials/mixins';
 @import 'partials/global';
 @import 'partials/login';
+@import 'partials/webkit-styles';
+@import 'partials/content-card';
 @import 'partials/animations';
-@import 'partials/components/cards';
-@import 'partials/contact';
-@import 'partials/components/about';
 @import 'partials/components/nav';
+@import 'partials/components/sets';
+@import 'partials/components/card-specific';
+@import 'partials/components/about';
+@import 'partials/contact';
 @import 'partials/components/footer';
 @import 'partials/media-queries';

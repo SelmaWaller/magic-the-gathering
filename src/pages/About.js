@@ -19,15 +19,15 @@ export default function About() {
     <>
       <div className="about">
         <div className="contentCard">
-          <div className="setTitle">
+          <div className="pageTitle">
             <h2>History and How to play</h2>
           </div>
-          <div className="postFilter">
+          <div className="pagination">
             <div>
               <button
                 disabled={currentPage === 1 ? true : false}
                 onClick={prev}
-                className="prevCard"
+                className="prevPage"
               >
                 <span>&#3894;</span>Prev
               </button>
@@ -37,7 +37,7 @@ export default function About() {
               <button
                 disabled={currentPage === 2 ? true : false}
                 onClick={next}
-                className="nextCard"
+                className="nextPage"
               >
                 Next <span>&#3894;</span>
               </button>

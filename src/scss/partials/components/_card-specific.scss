@@ -1,0 +1,74 @@
+.contentCard {
+  .pageTitle {
+    h2 {
+      padding-left: 10px;
+    }
+  }
+
+  img {
+    float: left;
+    opacity: 0.9;
+    width: 320px;
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 5px 0 15px rgba(black, 0.3);
+  }
+
+  .cardLoading {
+    float: left;
+    padding: 75px;
+  }
+
+  .cardInfo {
+    float: left;
+    padding-left: 25px;
+
+    h2 {
+      margin-top: 10px;
+    }
+
+    p {
+      max-width: 340px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.previewCards {
+  position: relative;
+  right: 0;
+  z-index: -1;
+
+  img {
+    border-radius: 10px;
+    max-width: 100%;
+  }
+
+  .previewPrevCard {
+    position: absolute;
+    width: 245px;
+    left: 100px;
+    top: 160px;
+    opacity: 0.6;
+
+    &__hide {
+      display: none;
+    }
+  }
+
+  .previewNextCard {
+    position: absolute;
+    width: 245px;
+    min-height: 340px;
+    right: 100px;
+    top: 160px;
+    opacity: 0.6;
+
+    &__hide {
+      display: none;
+    }
+  }
+}

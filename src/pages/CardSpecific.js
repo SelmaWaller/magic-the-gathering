@@ -101,11 +101,11 @@ function CardSpecific({
         </div>
       </div>
       <div className="contentCard">
-        <div className="setTitle">
+        <div className="pageTitle">
           {setIcon ? (
             <img src={setIcon} alt={setName} />
           ) : (
-            <div className="setIconLoading">
+            <div className="pageImgLoading">
               <ReactLoading
                 type={'spinningBubbles'}
                 color={'#51a9b6a1'}
@@ -116,14 +116,14 @@ function CardSpecific({
           )}
           {setName ? <h2>{setName}</h2> : <h2>&nbsp;&nbsp;&nbsp;Set Name</h2>}
         </div>
-        <div className="postFilter">
+        <div className="pagination">
           <div>
             <button
               disabled={collectorNumber <= firstCardInSet ? true : false}
               className={
                 collectorNumber >= firstCardInSet
-                  ? 'prevCard'
-                  : 'prevCard__hide'
+                  ? 'prevPage'
+                  : 'prevPage__hide'
               }
               onClick={prevCard}
             >
@@ -135,7 +135,7 @@ function CardSpecific({
             {lastCardInSet ? (
               lastCardInSet
             ) : (
-              <span className="lastCardLoading">
+              <span className="maxPageLoading">
                 {' '}
                 <ReactLoading
                   type={'spinningBubbles'}
@@ -150,7 +150,7 @@ function CardSpecific({
             <button
               disabled={collectorNumber <= lastCardInSet - 1 ? false : true}
               className={
-                collectorNumber <= lastCardInSet ? 'nextCard' : 'nextCard__hide'
+                collectorNumber <= lastCardInSet ? 'nextPage' : 'nextPage__hide'
               }
               onClick={nextCard}
             >
@@ -222,7 +222,7 @@ function CardSpecific({
             </>
           ) : (
             <>
-              <div className="loading">
+              <div className="cardLoading">
                 <ReactLoading
                   type={'spinningBubbles'}
                   color={'#51a9b6a1'}
