@@ -8,10 +8,11 @@ const CardSpecificComponent = ({
   rarity,
   manaCost,
   colorIdentity,
-  setType,
+  price,
   collectorNumber,
-  artist,
+  priceFoil,
   released,
+  artist,
 }) => {
   return (
     <>
@@ -21,35 +22,35 @@ const CardSpecificComponent = ({
         <p>{oracleText ? oracleText : <i>No oracle text for this card</i>}</p>
         <p>
           <span>Type: </span>
-          {type ? type : '-'}
+          {type ? type : ''}
         </p>
         <p>
           <span>Rarity: </span>
-          {rarity ? rarity : '-'}
+          {rarity ? rarity : ''}
         </p>
         <p>
           <span>Mana cost: </span>
-          {manaCost ? manaCost : '-'}
+          {manaCost ? manaCost : ''}
         </p>
         <p>
           <span>Color identity: </span>
-          {colorIdentity ? colorIdentity : '-'}
+          {colorIdentity ? colorIdentity : ''}
         </p>
         <p>
-          <span>Set type: </span>
-          {setType ? setType : '-'}
+          <span>Price (USD): </span>
+          {price ? price : ''} {priceFoil ? priceFoil : ''}
         </p>
         <p>
           <span>Collector number: </span>
-          {collectorNumber ? collectorNumber : '-'}
-        </p>
-        <p>
-          <span>Artist: </span>
-          {artist ? artist : '-'}
+          {collectorNumber ? collectorNumber : ''}
         </p>
         <p>
           <span>Released: </span>
-          {released ? released : '-'}
+          {released ? released : ''}
+        </p>
+        <p>
+          <span>Artist: </span>
+          {artist ? artist : ''}
         </p>
       </div>
     </>

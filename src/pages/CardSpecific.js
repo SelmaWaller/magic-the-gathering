@@ -52,8 +52,8 @@ function CardSpecific({
     <>
       <div className="previewCards">
         <div
-          className={`innerCard boxShadow textLeft ${
-            collectorNumber <= lastCardInSet - 1
+          className={`innerCard boxShadow ${
+            collectorNumber.replace(/\D/g, '') <= lastCardInSet - 1
               ? 'previewNextCard'
               : 'previewNextCard__hide'
           }`}
@@ -77,8 +77,8 @@ function CardSpecific({
           )}
         </div>
         <div
-          className={`innerCard boxShadow textLeft ${
-            collectorNumber <= firstCardInSet
+          className={`innerCard boxShadow ${
+            collectorNumber.replace(/\D/g, '') <= firstCardInSet
               ? 'previewPrevCard__hide'
               : 'previewPrevCard'
           }`}
@@ -121,9 +121,13 @@ function CardSpecific({
         <div className="pagination">
           <div>
             <button
-              disabled={collectorNumber <= firstCardInSet ? true : false}
+              disabled={
+                collectorNumber.replace(/\D/g, '') <= firstCardInSet
+                  ? true
+                  : false
+              }
               className={
-                collectorNumber >= firstCardInSet
+                collectorNumber.replace(/\D/g, '') >= firstCardInSet
                   ? 'prevPage'
                   : 'prevPage__hide'
               }
@@ -133,7 +137,9 @@ function CardSpecific({
             </button>
           </div>
           <button className="currentPage">
-            {collectorNumber} of{' '}
+            {' '}
+            {/* visual only non-digit pagination */}
+            {collectorNumber.replace(/\D/g, '')} of{' '}
             {lastCardInSet ? (
               lastCardInSet
             ) : (
@@ -150,9 +156,15 @@ function CardSpecific({
           </button>
           <div>
             <button
-              disabled={collectorNumber <= lastCardInSet - 1 ? false : true}
+              disabled={
+                collectorNumber.replace(/\D/g, '') <= lastCardInSet - 1
+                  ? false
+                  : true
+              }
               className={
-                collectorNumber <= lastCardInSet ? 'nextPage' : 'nextPage__hide'
+                collectorNumber.replace(/\D/g, '') <= lastCardInSet
+                  ? 'nextPage'
+                  : 'nextPage__hide'
               }
               onClick={nextCard}
             >
@@ -175,25 +187,21 @@ function CardSpecific({
                 rarity={
                   card.rarity
                     ? card.rarity.charAt(0).toUpperCase() + card.rarity.slice(1)
-                    : '-'
+                    : ''
                 }
                 manaCost={card.mana_cost}
                 colorIdentity={
                   colorIdentityPattern.test(card.color_identity)
                     ? card.color_identity
-                    : '-'
+                    : ''
                 }
-                setType={
-                  card.set_type
-                    ? card.set_type.charAt(0).toUpperCase() +
-                      card.set_type.slice(1)
-                    : '-'
-                }
+                price={card.prices ? `$${card.prices.usd}` : ''}
+                priceFoil={card.prices ? `/ $${card.prices.usd_foil}` : ''}
                 collectorNumber={
-                  card.collector_number ? card.collector_number : '-'
+                  card.collector_number ? card.collector_number : ''
                 }
-                artist={card.artist}
                 released={card.released_at}
+                artist={card.artist}
               />
             </>
           ) : (
