@@ -133,7 +133,7 @@ const Navigation = ({logout}) => {
                       <li>
                         <ReactLoading
                           type={'spinningBubbles'}
-                          color={'#51a9b6a1'}
+                          color={'#5494bea1'}
                           height={30}
                           width={30}
                         />
