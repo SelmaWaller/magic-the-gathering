@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $theme-scrollbar-hover;
+  background: $theme-scrollbar;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -21,16 +21,15 @@
 ::-webkit-input-placeholder,
 ::-moz-placeholder,
 :-ms-input-placeholder,
-:-moz-placeholder,
 ::-webkit-autofill {
   color: rgba($theme-gray-solid, 0.8);
   font-family: 'PT Sans', sans-serif;
 }
 
 ::selection {
-  background: $theme-blue;
+  background: $theme-selection;
 }
 
 ::-moz-selection {
-  background: $theme-blue;
+  background: $theme-selection;
 }

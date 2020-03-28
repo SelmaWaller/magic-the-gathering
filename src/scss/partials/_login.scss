@@ -68,33 +68,12 @@
       margin: 5px 0 5px -10px;
       width: 100%;
       font-weight: bold;
-      background: rgba($theme-skyblue, 0.5);
+      background: rgba($theme-white-solid, 0.5);
       border-radius: 3px;
     }
 
     .error__hide {
       display: none;
-    }
-
-    .loginButton {
-      font-family: 'PT Sans', sans-serif;
-      color: $theme-white-solid;
-      text-transform: uppercase;
-      border: none;
-      margin: 30px 0 0;
-      padding: 5px 10px;
-      border-radius: 3px;
-      @include calcRem(18);
-      text-align: center;
-      background: rgba($theme-black-solid, 0.8);
-      transition: 200ms ease-out;
-      cursor: pointer;
-
-      &:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-        transition: 200ms ease-out;
-      }
     }
   }
 }

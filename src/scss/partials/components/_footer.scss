@@ -3,13 +3,13 @@
   color: $theme-gray-solid;
   padding: 10px 0 0;
   margin-top: 60px;
-  margin-left: 20px;
+  margin-left: 10px;
 
   a {
-    color: #5494be;
+    color: $theme-blue;
 
     &:hover {
-      color: #3a78a1;
+      color: $theme-blue-hover;
     }
   }
 }
