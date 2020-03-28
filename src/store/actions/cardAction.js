@@ -5,7 +5,7 @@ export const CardAction = (set, name) => {
     return fetch(
       `https://api.scryfall.com/cards/search?q=${
         set === '' && name === '' ? 'set:ha2' : set
-      }+${name}`
+      }${name}`
     )
       .then(response => {
         return response.json();
