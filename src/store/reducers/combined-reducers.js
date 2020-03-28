@@ -5,7 +5,6 @@ import CardSpecificReducer from './cardSpecificReducer';
 import CardInfoReducer from './cardInfoReducer';
 import NextCardReducer from './nextCardReducer';
 import PreviousCardReducer from './previousCardReducer';
-import DebouncerReducer from './debouncerReducer';
 
 export default combineReducers({
   CardReducer,
@@ -14,5 +13,4 @@ export default combineReducers({
   CardInfoReducer,
   NextCardReducer,
   PreviousCardReducer,
-  DebouncerReducer,
 });
