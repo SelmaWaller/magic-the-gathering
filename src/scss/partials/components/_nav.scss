@@ -1,4 +1,4 @@
-.minified {
+.autoOpen {
   background: #f8f8f8;
   box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.3);
   height: 100%;
@@ -6,36 +6,25 @@
 
 .toggleButton {
   top: 0;
-  position: absolute;
+  position: fixed;
   transition: 200ms;
-
-  .menuButton {
-    cursor: pointer;
-    transition: 200ms ease-out;
-
-    &:hover {
-      transform: scale(1.1);
-      transition: 200ms ease-out;
-    }
-  }
+  z-index: 9999;
 
   .navIcons {
     img {
-      opacity: 0.3;
+      z-index: 9999;
+      cursor: pointer;
+      max-width: 100%;
+      margin: 5px 5px 5px 0;
+      height: 100%;
+      opacity: 0.8;
       transition: 100ms ease-out;
-    }
-
-    &__hide {
-      img {
-        opacity: 0;
-        transition: 100ms ease-out;
-      }
     }
   }
 
   ul {
     padding: 0;
-    margin: 0;
+    margin: 2px 0 0;
   }
 
   button {
@@ -45,16 +34,14 @@
   }
 
   img {
-    margin: 10px 10px 0 0;
     width: 25px;
     height: 25px;
   }
 }
 
 .toggle {
-  &__open,
-  &__closed {
-    background: #fff;
+  &__open {
+    background: $theme-white-solid;
     min-height: 100%;
     width: 250px;
     top: 0;
@@ -63,26 +50,19 @@
     transition: 300ms ease-out;
     z-index: 999;
   }
-}
 
-.userInfo {
-  background: #fff;
-  box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.2);
-  padding: 50px 0 20px;
-  text-align: center;
-  transition: 200ms;
+  &__closed {
+    background: $theme-white-solid;
+    box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.3);
+    transition: 300ms ease-out;
+    transform: translateX(-250px);
+    transition: 300ms ease-out;
+    position: fixed;
 
-  img {
-    width: 100px;
-    opacity: 0.95;
-  }
-
-  p:nth-child(3) {
-    cursor: pointer;
-    color: $theme-gray-solid;
-
-    &:hover {
-      color: #5494be;
+    + .container {
+      padding: 0 30px 0 40px;
+      margin-left: 20px;
+      transition: 300ms ease-out;
     }
   }
 }
@@ -97,102 +77,113 @@
 
   ul {
     padding: 0 25px 0;
+    margin: -5px 0 0 20px;
 
     li,
     .Collapsible__trigger {
       font-family: 'PT Sans', sans-serif;
       list-style: none;
-      margin: 20px 0 0;
+      margin: 17px 0 0;
       font-weight: bold;
       @include calcRem(17);
-      transition: 200ms ease-out;
       width: 100%;
 
       &:hover {
-        color: #5494be;
+        color: $theme-blue;
       }
     }
   }
 
-  a {
+  a,
+  span {
     cursor: pointer;
     color: $theme-gray-solid;
     text-decoration: none;
-    transition: 200ms ease-out;
     opacity: 0.8;
 
     &:hover {
       opacity: 1;
-      transition: 200ms ease-out;
-      color: #5494be;
+      color: $theme-blue;
     }
   }
 }
 
-.Collapsible {
-  max-height: 340px;
-  width: 100%;
-  padding: 10px 0;
-  color: $theme-gray-solid;
+.navCollapsible {
+  .Collapsible {
+    margin-top: 6px;
+    height: 400px;
+    max-height: 100%;
+    width: 100%;
+    padding: 15px 0;
+    color: $theme-gray-solid;
 
-  &__contentOuter {
-    margin-left: -5px;
-    margin-right: -25px;
-    margin-top: -10px;
-  }
+    &__contentOuter {
+      margin-left: -35px;
+      margin-right: -25px;
+      margin-top: -10px;
+    }
 
-  .is-closed::after {
-    content: '\276F';
-    position: absolute;
-    margin-top: 1px;
-    margin-left: 10px;
-    transform: rotate(90deg);
-  }
+    .is-closed::after {
+      content: '\276F';
+      position: absolute;
+      margin-top: 1px;
+      margin-left: 10px;
+      transform: rotate(90deg);
+    }
 
-  .is-open::after {
-    content: '\276F';
-    position: absolute;
-    margin-top: 1px;
-    margin-left: 10px;
-    transform: rotate(270deg);
-  }
+    .is-open::after {
+      content: '\276F';
+      position: absolute;
+      margin-top: 1px;
+      margin-left: 10px;
+      transform: rotate(270deg);
+    }
 
-  .setList {
-    margin: 20px 0;
-    overflow: auto;
-    max-height: 300px;
+    .setList {
+      margin: 20px 0;
+      overflow: auto;
+      height: 400px;
+      max-height: 100%;
 
-    .listItem {
-      display: flex;
-      justify-content: left;
+      .listItem {
+        display: flex;
+        justify-content: left;
 
-      p {
-        @include calcRem(14);
-        font-weight: bold;
-        max-width: 180px;
-        overflow-x: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
+        &__hide {
+          display: none;
+        }
+        &:nth-child(even) {
+          background: #d8d8d8;
+        }
 
-      img {
-        border-radius: 0;
-        margin: 7px 0 0 5px;
-        height: 20px;
-        width: 20px;
-      }
+        p {
+          @include calcRem(14);
+          font-weight: bold;
+          max-width: 180px;
+          overflow-x: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
 
-      button {
-        width: 100%;
-        cursor: pointer;
-        background: none;
-        border: none;
-        text-align: left;
-        margin: -5px 0 -5px;
-        padding: 0 10px 0 5px;
+        img {
+          border-radius: 0;
+          margin: 7px 0 0 5px;
+          height: 20px;
+          width: 20px;
+        }
 
-        &:hover {
-          color: #5494be;
+        button {
+          width: 100%;
+          cursor: pointer;
+          background: none;
+          border: none;
+          text-align: left;
+          margin: -5px 0 -5px;
+          padding: 0 10px 0 5px;
+
+          &:hover {
+            color: $theme-blue;
+          }
         }
       }
     }

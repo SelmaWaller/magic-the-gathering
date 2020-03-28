@@ -7,14 +7,14 @@ import {CardAction} from './../store/actions/cardAction';
 import {CardSetsAction} from './../store/actions/cardSetsAction';
 import Collapsible from 'react-collapsible';
 
-import userImg from './../images/mtglogo.png';
+import browseSets from './../images/icons/browse-sets.png';
 import hamburger from './../images/icons/hamburger.svg';
 import sets from './../images/icons/sets.svg';
-import user from './../images/icons/user.svg';
-import info from './../images/icons/info.svg';
+import switchUser from './../images/icons/switchUser.svg';
+import about from './../images/icons/about.svg';
 import contact from './../images/icons/contact.svg';
 
-const Navigation = ({logout, currentUser}) => {
+const Navigation = ({logout}) => {
   const dispatch = useDispatch();
   const [navIsOpen, setNavIsOpen] = useState(true);
 
@@ -27,90 +27,122 @@ const Navigation = ({logout, currentUser}) => {
   const toggleNav = () => {
     navIsOpen === true ? setNavIsOpen(false) : setNavIsOpen(true);
   };
+
+  let today = new Date();
+  let yyyy = today.getFullYear();
+  let mm = String(today.getMonth() + 1).padStart(2, '0');
+  let dd = String(today.getDate()).padStart(2, '0');
+
+  today = `${yyyy}-${mm}-${dd}`;
   return (
     <>
-      <div className={navIsOpen ? 'toggleButton minified' : 'toggleButton'}>
-        <ul>
-          <li>
-            <button onClick={toggleNav} className="menuButton">
-              <img src={hamburger} alt="toggle-menu" title="Toggle menu" />
-            </button>
-          </li>
-          <div className={navIsOpen ? 'navIcons' : 'navIcons__hide'}>
+      <div
+        className={
+          navIsOpen ? 'toggleButton autoClose' : 'toggleButton autoOpen'
+        }
+      >
+        <div className="navIcons">
+          <ul>
             <li>
-              <button>
-                <img src={user} alt="user" />
+              <button onClick={toggleNav}>
+                <img src={hamburger} alt="toggle-menu" title="Toggle menu" />
               </button>
             </li>
             <li>
-              <button>
-                <img src={sets} alt="sets" />
+              <NavLink to="/">
+                <button>
+                  <img src={sets} alt="sets" title="Home" />
+                </button>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about">
+                <button>
+                  <img src={about} alt="about" title="About" />
+                </button>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact">
+                <button>
+                  <img src={contact} alt="contact" title="Contact" />
+                </button>
+              </NavLink>
+            </li>
+            <li>
+              <button onClick={logout}>
+                <img src={switchUser} alt="logout" title="Log out" />
               </button>
             </li>
             <li>
-              <button>
-                <img src={info} alt="about" />
+              <button onClick={toggleNav}>
+                <img src={browseSets} alt="browseSets" title="Browse sets" />
               </button>
             </li>
-            <li>
-              <button>
-                <img src={contact} alt="contact" />
-              </button>
-            </li>
-          </div>
-        </ul>
+          </ul>
+        </div>
       </div>
       <div className={navIsOpen ? 'toggle__open' : 'toggle__closed'}>
-        <div className="userInfo">
-          <img src={userImg} alt="userimg" />
-          <p>Logged in as {currentUser}</p>
-          <p>
-            <span onClick={logout}>Switch user</span>
-          </p>
-        </div>
         <nav className="navbar">
           <ul>
-            <NavLink to="/">
-              <Collapsible trigger="Sets" open={true}>
-                <div className="setList">
-                  {setNames ? (
-                    setNames.slice(5).map((value, index) => {
-                      //temporary solutions for future sets
-                      return (
-                        <div key={index} className="listItem">
-                          <img src={value.icon_svg_uri} alt={value.code} />
-                          <button
-                            title={value.name}
-                            key={index}
-                            onClick={() => {
-                              const queryCode = value.code;
-                              dispatch(CardAction(`set:${queryCode}`, ''));
-                            }}
-                          >
-                            <p>{value.name}</p>
-                          </button>
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <li>
-                      <ReactLoading
-                        type={'spinningBubbles'}
-                        color={'#51a9b6a1'}
-                        height={30}
-                        width={30}
-                      />
-                    </li>
-                  )}
-                </div>
-              </Collapsible>
-            </NavLink>
+            <li>
+              <span onClick={toggleNav}>Toggle menu</span>
+            </li>
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
             <li>
               <NavLink to="/about">About</NavLink>
             </li>
             <li>
               <NavLink to="/contact">Contact</NavLink>
             </li>
+            <li>
+              <span onClick={logout}>Log out</span>
+            </li>
+            <div className="navCollapsible">
+              <Collapsible trigger="Browse sets" open={true}>
+                <NavLink to="/">
+                  <div className="setList">
+                    {setNames ? (
+                      setNames.map((value, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className={
+                              value.released_at <= today
+                                ? 'listItem'
+                                : 'listItem__hide'
+                            }
+                            title={value.name}
+                          >
+                            <img src={value.icon_svg_uri} alt={value.code} />
+                            <button
+                              key={index}
+                              onClick={() => {
+                                const queryCode = value.code;
+                                dispatch(CardAction(`set:${queryCode}`, ''));
+                              }}
+                            >
+                              <p>{value.name}</p>
+                            </button>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <li>
+                        <ReactLoading
+                          type={'spinningBubbles'}
+                          color={'#51a9b6a1'}
+                          height={30}
+                          width={30}
+                        />
+                      </li>
+                    )}
+                  </div>
+                </NavLink>
+              </Collapsible>
+            </div>
           </ul>
         </nav>
       </div>

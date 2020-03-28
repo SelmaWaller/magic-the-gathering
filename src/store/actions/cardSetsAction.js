@@ -11,6 +11,7 @@ export const CardSetsAction = () => {
           type: GET_CARD_RESULTS,
           setNames: results.data,
           setCode: results.data.code,
+          released: results.data.released_at,
         });
       })
       .catch(() => {

@@ -40,7 +40,8 @@ function Sets() {
       </div>
       <div className="smallCardContainer overview">
         {cards ? (
-          cards.map((value, index) => {
+          cards.slice(0, 50).map((value, index) => {
+            //temporary solution until pagination fix
             return (
               <div className="linkedCard cards" key={index}>
                 <Cards
