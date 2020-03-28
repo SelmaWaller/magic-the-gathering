@@ -7,6 +7,8 @@ import {NextCardAction} from '../store/actions/nextCardAction';
 import {PreviousCardAction} from '../store/actions/previousCardAction';
 import ReactLoading from 'react-loading';
 
+import CardSpecificComponent from './../components/card-specific';
+
 function CardSpecific({
   match: {
     params: {set, collectorNumber},
@@ -161,64 +163,38 @@ function CardSpecific({
         <div className="innerCard boxShadow textLeft contentCard">
           {card ? (
             <>
-              <img
-                src={
+              <CardSpecificComponent
+                image={
                   card.image_uris
                     ? card.image_uris.normal
                     : 'https://img.scryfall.com/cards/normal/front/0/5/05e5bb13-d2b1-41fa-9cdf-70efa40455d4.jpg?1579777567'
                 }
-                alt={cardName}
-              />
-              <div className="cardInfo">
-                <h2>{cardName ? cardName : 'Card Name'}</h2>
-                <p>
-                  {card.oracle_text ? (
-                    card.oracle_text
-                  ) : (
-                    <i>No oracle text for this card</i>
-                  )}
-                </p>
-                <p>
-                  <span>Type: </span>
-                  {card.type_line ? card.type_line : '-'}
-                </p>
-                <p>
-                  <span>Rarity: </span>
-                  {card.rarity
+                name={cardName ? cardName : 'Card Name'}
+                oracleText={card.oracle_text}
+                type={card.type_line}
+                rarity={
+                  card.rarity
                     ? card.rarity.charAt(0).toUpperCase() + card.rarity.slice(1)
-                    : '-'}
-                </p>
-                <p>
-                  <span>Mana cost: </span>
-                  {card.mana_cost ? card.mana_cost : '-'}
-                </p>
-                <p>
-                  <span>Color identity: </span>
-                  {colorIdentityPattern.test(card.color_identity)
+                    : '-'
+                }
+                manaCost={card.mana_cost}
+                colorIdentity={
+                  colorIdentityPattern.test(card.color_identity)
                     ? card.color_identity
-                    : '-'}
-                </p>
-                <p>
-                  <span>Set type: </span>
-                  {card.set_type
+                    : '-'
+                }
+                setType={
+                  card.set_type
                     ? card.set_type.charAt(0).toUpperCase() +
                       card.set_type.slice(1)
-                    : '-'}
-                </p>
-                <p>
-                  <span>Collector number: </span>
-                  {card.collector_number ? card.collector_number : '-'}/
-                  {lastCardInSet ? lastCardInSet : '-'}
-                </p>
-                <p>
-                  <span>Artist: </span>
-                  {card.artist ? card.artist : '-'}
-                </p>
-                <p>
-                  <span>Released: </span>
-                  {card.released_at ? card.released_at : '-'}
-                </p>
-              </div>
+                    : '-'
+                }
+                collectorNumber={
+                  card.collector_number ? card.collector_number : '-'
+                }
+                artist={card.artist}
+                released={card.released_at}
+              />
             </>
           ) : (
             <>
@@ -231,32 +207,7 @@ function CardSpecific({
                 />
               </div>
               <div className="cardInfo">
-                <h2>Card Name</h2>
-                <p>Oracle text</p>
-                <p>
-                  <span>Type: </span>-
-                </p>
-                <p>
-                  <span>Rarity: </span>-
-                </p>
-                <p>
-                  <span>Mana cost: </span>-
-                </p>
-                <p>
-                  <span>Color identity: </span>-
-                </p>
-                <p>
-                  <span>Set type: </span>-
-                </p>
-                <p>
-                  <span>Collector number: </span>-
-                </p>
-                <p>
-                  <span>Artist: </span>-
-                </p>
-                <p>
-                  <span>Released: </span>-
-                </p>
+                <CardSpecificComponent />
               </div>
             </>
           )}
