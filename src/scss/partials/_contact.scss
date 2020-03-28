@@ -18,7 +18,7 @@
     font-weight: normal;
     position: absolute;
     margin: 0px 0 0 1px;
-    color: $theme-error;
+    color: $input-error;
     animation: cardGradient 5s infinite;
   }
 
@@ -27,7 +27,7 @@
     margin: 0;
     padding-left: 10px;
     font-weight: normal;
-    color: $theme-error;
+    color: $input-error;
 
     &__hide {
       display: none;
