@@ -7,7 +7,6 @@ export const CardSpecificAction = ({set, collectorNumber}) => {
         return response.json();
       })
       .then(results => {
-        console.log(results);
         dispatch({
           type: GET_CARD_RESULTS,
           card: results,
