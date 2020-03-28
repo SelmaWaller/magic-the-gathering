@@ -15,9 +15,13 @@
 .searchField {
   width: 200px;
   margin: 20px;
-  margin-left: 5px;
+  margin-left: 10px;
 
-  input:focus {
-    border-bottom: 1px solid rgba($theme-gray-solid, 0.5);
+  input {
+    font-weight: normal;
+    @include calcRem(17);
+    &:focus {
+      border-bottom: 1px solid rgba($theme-gray-solid, 0.5);
+    }
   }
 }
