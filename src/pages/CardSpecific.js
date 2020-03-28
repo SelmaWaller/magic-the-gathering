@@ -172,7 +172,7 @@ function CardSpecific({
             </button>
           </div>
         </div>
-        <div className="innerCard boxShadow textLeft contentCard">
+        <div className="innerCard boxShadow contentCard">
           {card ? (
             <>
               <CardSpecificComponent
