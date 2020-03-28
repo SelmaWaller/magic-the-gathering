@@ -1,31 +1,33 @@
-.contact {
-  margin: 0 auto;
-
-  .contactForm {
-    position: relative;
-  }
+.contactContent {
+  padding: 0 20px 20px;
+  background-image: url('./../../images/contact-background.png');
+  background-size: 760px;
+  background-position: 220px 95px;
+  background-repeat: no-repeat;
+  position: relative;
 
   label {
     display: block;
-    @include calcRem(18);
+    @include calcRem(17);
     margin: 20px 0 7px;
     animation: cardGradient 5s infinite;
+    font-family: 'PT Sans', sans-serif;
   }
 
   .required {
-    @include calcRem(22);
+    font-weight: normal;
     position: absolute;
-    margin-top: 2px;
-    color: black;
+    margin: 0px 0 0 1px;
+    color: $theme-error;
     animation: cardGradient 5s infinite;
   }
 
   .error {
-    @include calcRem(16);
+    @include calcRem(15);
     margin: 0;
     padding-left: 10px;
-    color: black;
-    animation: cardGradient 5s infinite;
+    font-weight: normal;
+    color: $theme-error;
 
     &__hide {
       display: none;
@@ -36,13 +38,19 @@
     background: none;
     padding: 10px 5px 5px;
     @include calcRem(16);
-    width: 96%;
+    width: 100%;
+    max-width: 400px;
     border: none;
     border: 1px solid rgba($theme-gray-solid, 0.5);
     color: rgba($theme-gray-solid, 0.9);
 
     &::placeholder {
       opacity: 0.7;
+    }
+
+    &:hover,
+    &:focus {
+      border: 1px solid rgba($theme-gray-solid, 0.5);
     }
   }
 
@@ -53,53 +61,41 @@
     max-width: 96%;
     padding: 5px;
     resize: none;
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
     min-height: 100px;
     max-height: 100px;
 
     &::placeholder {
       opacity: 0.7;
     }
-  }
 
-  .submitButton {
-    font-family: 'Cabin', sans-serif;
-    border: none;
-    margin: 20px 0 25px;
-    padding: 5px 10px;
-    border-radius: 3px;
-    @include calcRem(16);
-    display: block;
-    background-image: $theme-rick-gradient-light;
-    animation: cardGradient 5s infinite;
-    cursor: pointer;
-
-    &:disabled {
-      cursor: default;
-      opacity: 0.7;
-      cursor: not-allowed;
-
-      &:hover {
-        opacity: 0.7;
-      }
+    &:focus {
+      outline: 0 !important;
+      -webkit-appearance: none;
     }
   }
 
+  .submitButton {
+    margin: 10px 0 0;
+    @include calcRem(17);
+    display: block;
+  }
+
   .messageSent {
-    background: rgba(white, 0.9);
     position: absolute;
+    background: rgba($theme-white-solid, 0.9);
     width: 100%;
     height: 100%;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
 
     input {
       @include calcRem(18);
       position: absolute;
       text-align: center;
       height: 100%;
+      min-width: 100%;
       border: none;
       margin-top: -30px;
       animation: fadeIn 300ms ease;
@@ -107,51 +103,19 @@
 
       &:nth-child(2) {
         @include calcRem(18);
-        bottom: 240px;
+        bottom: 260px;
         height: 30px;
         cursor: pointer;
-        color: black;
-        animation: fadeIn 300ms ease, cardGradient 5s infinite;
+        animation: fadeIn 300ms ease;
+
+        &:hover {
+          color: $theme-blue;
+        }
       }
     }
+
     &__hide {
       display: none;
-    }
-  }
-
-  .Collapsible {
-    border-top: 1px solid rgba($theme-gray-solid, 0.5);
-    padding-top: 20px;
-
-    &__trigger {
-      cursor: pointer;
-      @include calcRem(18);
-    }
-
-    .is-closed::after {
-      content: '\276F';
-      position: absolute;
-      margin-left: 10px;
-      transform: rotate(90deg);
-      transition: 400ms ease;
-    }
-
-    .is-open::after {
-      content: '\276F';
-      position: absolute;
-      margin-left: 10px;
-      transform: rotate(270deg);
-      transition: 400ms ease;
-    }
-
-    &__contentInner {
-      margin-top: 10px;
-      padding: 5px 10px;
-      border: 1px solid rgba($theme-gray-solid, 0.5);
-      p {
-        margin: 0;
-        @include calcRem(16);
-      }
     }
   }
 }
