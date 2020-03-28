@@ -81,7 +81,7 @@ export default function Login({updateLoginStatus, updateLogin}) {
               onClick={updateLogin}
               type="submit"
               disabled={usernameError || passwordError}
-              className="loginButton"
+              className="submitButton"
             >
               Log in
             </button>
