@@ -53,7 +53,6 @@ export default function Login({updateLoginStatus, updateLogin}) {
               </label>
             </h3>
             <input
-              autoFocus
               onChange={handleChange}
               id="username"
               type="text"
