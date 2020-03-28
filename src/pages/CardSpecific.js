@@ -110,7 +110,7 @@ function CardSpecific({
             <div className="pageImgLoading">
               <ReactLoading
                 type={'spinningBubbles'}
-                color={'#51a9b6a1'}
+                color={'#5494bea1'}
                 height={40}
                 width={40}
               />
@@ -141,7 +141,7 @@ function CardSpecific({
                 {' '}
                 <ReactLoading
                   type={'spinningBubbles'}
-                  color={'#51a9b6a1'}
+                  color={'#5494bea1'}
                   height={15}
                   width={15}
                 />
@@ -201,13 +201,10 @@ function CardSpecific({
               <div className="cardLoading">
                 <ReactLoading
                   type={'spinningBubbles'}
-                  color={'#51a9b6a1'}
+                  color={'#5494bea1'}
                   height={278}
                   width={200}
                 />
-              </div>
-              <div className="cardInfo">
-                <CardSpecificComponent />
               </div>
             </>
           )}
