@@ -45,7 +45,7 @@ export default function About() {
           </div>
           <div
             id="aboutContent"
-            className="innerCard boxShadow textLeft contentCard aboutContent"
+            className="innerCard boxShadow contentCard aboutContent"
           >
             <h2>The history of Magic</h2>
             <p>
