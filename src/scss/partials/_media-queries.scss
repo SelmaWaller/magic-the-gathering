@@ -76,6 +76,15 @@
     }
   }
 }
+
+@media only screen and(max-width: 740px) {
+  .contentCard {
+    .specificCard {
+      display: block;
+    }
+  }
+}
+
 @media only screen and(max-width: 600px) {
   .container {
     margin-top: 20px;

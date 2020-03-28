@@ -5,39 +5,39 @@
     }
   }
 
-  img {
-    float: left;
-    opacity: 0.9;
-    width: 320px;
-    max-width: 100%;
-    border-radius: 15px;
-    box-shadow: 5px 0 15px rgba(black, 0.3);
-  }
+  .specificCard {
+    width: 100%;
+    display: flex;
 
-  .cardLoading {
-    float: left;
-    padding: 75px;
-  }
-
-  .cardInfo {
-    float: left;
-    padding-left: 25px;
-
-    h2 {
-      margin-top: 10px;
-      min-width: 200px;
-      max-width: 390px;
+    img {
+      opacity: 0.9;
+      width: 100%;
+      max-width: 340px;
+      height: 100%;
+      border-radius: 15px;
+      box-shadow: 5px 0 15px rgba(black, 0.3);
     }
 
-    p {
-      overflow: auto;
-      padding-right: 10px;
-      max-height: 100px;
-      max-width: 390px;
+    .cardLoading {
+      padding: 75px;
     }
 
-    span {
-      font-weight: bold;
+    .cardInfo {
+      padding-left: 25px;
+
+      h2 {
+        margin-top: 10px;
+      }
+
+      p {
+        overflow: auto;
+        padding-right: 10px;
+        max-height: 100px;
+      }
+
+      span {
+        font-weight: bold;
+      }
     }
   }
 }
@@ -56,7 +56,7 @@
     position: absolute;
     width: 245px;
     left: 100px;
-    top: 160px;
+    top: 163px;
     opacity: 0.6;
 
     &__hide {
@@ -69,7 +69,7 @@
     width: 245px;
     min-height: 340px;
     right: 100px;
-    top: 160px;
+    top: 163px;
     opacity: 0.6;
 
     &__hide {
