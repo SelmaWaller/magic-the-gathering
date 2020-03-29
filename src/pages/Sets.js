@@ -31,7 +31,7 @@ function Sets() {
           <div>
             <input
               type="text"
-              placeholder={`Ex. Thassa`}
+              placeholder={`Search in all cards`}
               autoFocus
               onChange={handleCharSearch}
             />

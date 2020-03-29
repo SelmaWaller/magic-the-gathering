@@ -4,7 +4,7 @@ export const CardAction = (set, name) => {
   return dispatch => {
     return fetch(
       `https://api.scryfall.com/cards/search?q=${
-        set === '' && name === '' ? 'set:ha2' : set
+        (set === '' || undefined) && name === '' ? 'set:ha2' : set
       }${name}`
     )
       .then(response => {
