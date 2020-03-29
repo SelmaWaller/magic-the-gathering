@@ -1,6 +1,6 @@
-Username: username
-Password: password
+Username: username</br>
+Password: password</br>
 
-Todos:
-• Pagination on main page
-• Pagination for collector numbers containing non-digits
+Todo:</br>
+• Pagination in overview</br>
+• Functional pagination for non-digit collector numbers
