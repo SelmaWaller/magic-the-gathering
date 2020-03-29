@@ -8,6 +8,7 @@ import {PreviousCardAction} from '../store/actions/previousCardAction';
 import ReactLoading from 'react-loading';
 
 import CardSpecificComponent from './../components/card-specific';
+import Pagination from './../components/pagination';
 
 function CardSpecific({
   match: {
@@ -26,6 +27,8 @@ function CardSpecific({
   const {card, cardName, setUri, setName, next, prev} = useSelector(
     state => state.CardSpecificReducer
   );
+
+  const strippedCollectorNumber = collectorNumber.replace(/\D/g, '');
 
   useEffect(() => {
     dispatch(CardSpecificAction({set, collectorNumber}));
@@ -53,7 +56,7 @@ function CardSpecific({
       <div className="previewCards">
         <div
           className={`innerCard boxShadow ${
-            collectorNumber.replace(/\D/g, '') <= lastCardInSet - 1
+            strippedCollectorNumber <= lastCardInSet - 1
               ? 'previewNextCard'
               : 'previewNextCard__hide'
           }`}
@@ -78,7 +81,7 @@ function CardSpecific({
         </div>
         <div
           className={`innerCard boxShadow ${
-            collectorNumber.replace(/\D/g, '') <= firstCardInSet
+            strippedCollectorNumber <= firstCardInSet
               ? 'previewPrevCard__hide'
               : 'previewPrevCard'
           }`}
@@ -118,29 +121,19 @@ function CardSpecific({
           )}
           {setName ? <h2>{setName}</h2> : <h2>&nbsp;&nbsp;&nbsp;Set Name</h2>}
         </div>
-        <div className="pagination">
-          <div>
-            <button
-              disabled={
-                collectorNumber.replace(/\D/g, '') <= firstCardInSet
-                  ? true
-                  : false
-              }
-              className={
-                collectorNumber.replace(/\D/g, '') >= firstCardInSet
-                  ? 'prevPage'
-                  : 'prevPage__hide'
-              }
-              onClick={prevCard}
-            >
-              <span>&#3894;</span>Prev
-            </button>
-          </div>
-          <button className="currentPage">
-            {' '}
-            {/* visual only non-digit pagination */}
-            {collectorNumber.replace(/\D/g, '')} of{' '}
-            {lastCardInSet ? (
+        <Pagination
+          prevDisabled={
+            strippedCollectorNumber <= firstCardInSet ? true : false
+          }
+          prevClassName={
+            strippedCollectorNumber >= firstCardInSet
+              ? 'prevPage'
+              : 'prevPage__hide'
+          }
+          toPrev={prevCard}
+          currentPage={strippedCollectorNumber}
+          lastPage={
+            lastCardInSet ? (
               lastCardInSet
             ) : (
               <span className="maxPageLoading">
@@ -152,26 +145,18 @@ function CardSpecific({
                   width={15}
                 />
               </span>
-            )}
-          </button>
-          <div>
-            <button
-              disabled={
-                collectorNumber.replace(/\D/g, '') <= lastCardInSet - 1
-                  ? false
-                  : true
-              }
-              className={
-                collectorNumber.replace(/\D/g, '') <= lastCardInSet
-                  ? 'nextPage'
-                  : 'nextPage__hide'
-              }
-              onClick={nextCard}
-            >
-              Next <span>&#3894;</span>
-            </button>
-          </div>
-        </div>
+            )
+          }
+          nextDisabled={
+            strippedCollectorNumber <= lastCardInSet - 1 ? false : true
+          }
+          nextClassName={
+            strippedCollectorNumber <= lastCardInSet
+              ? 'nextPage'
+              : 'nextPage__hide'
+          }
+          toNext={nextCard}
+        />
         <div className="innerCard boxShadow contentCard specificCard">
           {card ? (
             <>

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import HowToPlay from './../components/how-to-play';
 import History from './../components/history';
+import Pagination from './../components/pagination';
 
 export default function About() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,27 +23,16 @@ export default function About() {
           <div className="pageTitle">
             <h2>History and How to play</h2>
           </div>
-          <div className="pagination">
-            <div>
-              <button
-                disabled={currentPage === 1 ? true : false}
-                onClick={prev}
-                className="prevPage"
-              >
-                <span>&#3894;</span>Prev
-              </button>
-            </div>
-            <button className="currentPage">{currentPage} of 2</button>
-            <div>
-              <button
-                disabled={currentPage === 2 ? true : false}
-                onClick={next}
-                className="nextPage"
-              >
-                Next <span>&#3894;</span>
-              </button>
-            </div>
-          </div>
+          <Pagination
+            prevDisabled={currentPage === 1 ? true : false}
+            prevClassName={'prevPage'}
+            toPrev={prev}
+            currentPage={currentPage}
+            lastPage={'2'}
+            nextDisabled={currentPage === 2 ? true : false}
+            nextClassName={'nextPage'}
+            toNext={next}
+          />
           <div
             id="aboutContent"
             className="innerCard boxShadow contentCard aboutContent"
