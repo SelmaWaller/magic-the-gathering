@@ -21,9 +21,7 @@ function Sets() {
       clearTimeout(debounce);
     }
     const name = input.target.value.split(' ').join('+');
-    if (name !== '+') {
-      setDebounce(setTimeout(() => dispatch(CardAction('', name)), 300));
-    }
+    setDebounce(setTimeout(() => dispatch(CardAction('', name)), 300));
   };
 
   return (
@@ -33,7 +31,7 @@ function Sets() {
           <div>
             <input
               type="text"
-              placeholder={`Ex. Thassa, t:god`}
+              placeholder={`Ex. Thassa`}
               autoFocus
               onChange={handleCharSearch}
             />
