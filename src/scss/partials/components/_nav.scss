@@ -41,20 +41,18 @@
 
 .toggle {
   &__open {
-    background: $theme-white-solid;
+    border-right: 1px solid #acacac;
     min-height: 100%;
     width: 250px;
     top: 0;
     position: fixed;
-    box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.3);
     transition: 300ms ease-out;
     z-index: 999;
   }
 
   &__closed {
     top: 0;
-    background: $theme-white-solid;
-    box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.3);
+    border-right: 1px solid #acacac;
     transition: 300ms ease-out;
     transform: translateX(-250px);
     transition: 300ms ease-out;

@@ -121,6 +121,7 @@ const Navigation = ({logout}) => {
                               key={index}
                               onClick={() => {
                                 const queryCode = value.code;
+                                console.log(value.code);
                                 dispatch(CardAction(`set:${queryCode}`, ''));
                               }}
                             >

@@ -13,7 +13,7 @@ function Sets() {
   const {cards} = useSelector(state => state.CardReducer);
 
   useEffect(() => {
-    dispatch(CardAction('set:ha2', ''));
+    dispatch(CardAction('set:med', ''));
   }, [dispatch]);
 
   let handleCharSearch = input => {

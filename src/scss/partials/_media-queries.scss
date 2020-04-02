@@ -1,12 +1,11 @@
 @media only screen and(max-width: 1260px) {
   .toggle {
     &__closed {
-      background: $theme-white-solid;
+      border-right: 1px solid #acacac;
       min-height: 100%;
       width: 250px;
       top: 0;
       position: fixed;
-      box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.2);
       transition: 300ms ease-out;
       z-index: 999;
       transition: 300ms ease-out;
@@ -117,14 +116,14 @@
 
   .toggle {
     &__closed {
-      background: rgba(#fcfcfc, 0.8);
+      background: rgba($theme-white-solid, 0.8);
+      border: none;
       min-height: 100%;
       width: 100%;
       margin-left: 0px;
       transform: translateX(0);
       top: 0;
       position: fixed;
-      box-shadow: inset 0 0 20px rgba(#8f8f8f, 0.8);
       transition: 300ms ease-out;
       z-index: 999;
       transition: 300ms ease-out;
