@@ -1,6 +1,4 @@
 Username: username</br>
 Password: password</br>
 
-Todo:</br>
-• Pagination in overview</br>
-• Functional pagination for non-digit collector numbers
+A JS framework school assignment web app, using scryfall's api
